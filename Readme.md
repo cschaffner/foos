@@ -1,4 +1,4 @@
-#Foosball slow motion instant replay
+# Foosball slow motion instant replay
 
 Ever wanted to relive your best foosball shots? Now you can with this project!
 Featuring:
@@ -12,8 +12,7 @@ See a video of it in action:
 
 [![Instant replay video](https://img.youtube.com/vi/BXMhitiaXEE/0.jpg)](https://www.youtube.com/watch?v=BXMhitiaXEE)
 
-![table]
-(doc/table.jpg)
+![table](doc/table.jpg)
 
 To build it you'll need
  * A foosball table ;)

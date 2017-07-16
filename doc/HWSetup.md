@@ -6,11 +6,9 @@ These are the following hardware elements needed for the replay setup:
  * Optional: Arduino (Nano) w/ push buttons and IR barrier
  * TV
 
-![table]
-(table.jpg)
+![table](table.jpg)
 
-![stand]
-(stand.jpg)
+![stand](stand.jpg)
 
 
 ## Goal detection
@@ -21,18 +19,15 @@ Due to the table's construction it's possible for balls coming in the black goal
 
 IR barrier mounted undear each goal
 
-![Table inside overview]
-(table_inside.jpg)
+![Table inside overview](table_inside.jpg)
 
 IR emitting LED
 
-![Table inside closer]
-(table_inside2.jpg)
+![Table inside closer](table_inside2.jpg)
 
 IR Receiver mounted to a small piede of wood behind the hole
 
-![Receiver]
-(receiver.jpg)
+![Receiver](receiver.jpg)
 
 ## User interaction
 
@@ -44,8 +39,7 @@ We've included 5 push buttons so that the players can interact with the UI, to p
 
 We've tried to keep the modifications of the table to a minimum so the button box is fixed to the table using the screws of the yellow score posts.
 
-![buttons]
-(buttons.jpg)
+![buttons](buttons.jpg)
 
 ## Raspberry Pi
 
@@ -57,8 +51,7 @@ The Raspberry Pi runs:
 In our setup the TV is mounted on a TV trolley that is standing right beside the table. The Raspberry Pi is taped to its back with the camera sticking out over the top.
 It only needs the power cable and a network cable and a USB cable to the Arduino inside the button box.
 
-![Raspberry Pi and Camera]
-(raspberry_cam.jpg)
+![Raspberry Pi and Camera](raspberry_cam.jpg)
 
 ## Replay
 
@@ -75,25 +68,23 @@ You can find more info here: https://www.raspberrypi.org/blog/vectors-from-coars
 
 ## Arduino
 
-The arduino takes core of getting input from the push buttons, and detecting when a goal is scored (IR Barrier) and sends these events over the serial interface.
+The arduino takes care of getting input from the push buttons, and detecting when a goal is scored (IR Barrier) and sends these events over the serial interface.
 It also reads from the serial interface to turn the LEDs on the push buttons on off.
 In our setup the arduino is inside a box with the push buttons, from there we run a multiwired cable (it's actually a cat-5 ethernet cable) inside of the table to run the IR barrier under each of the goals.
 It mainly debounces all input from the buttons and the IR barriers and sends easy to read events over the serial interface.
 From the bow we needed to run a cable inside of the table for the goal detecting IR barriers - here we just drilled a small hole right behind the goal.
 
-![arduino]
-(arduino.jpg)
+![arduino](arduino.jpg)
 
 A 38kHz singal is required for the emitter of the IR barrier, so this signal is generated using timer1 on pin D9. We've included a transistor so the LEDs are not directly driven from the Arduino output pin.
 The IR receivers are connected to Pin D2 and D3 and interrupts are attached to these pins to detect goals. The pushbuttons are connected to the digital pins following D3, and are read at a fixed interval to debounce the switches.
 The button LEDS are connected to the analog pins.
 
-![schematic]
-(foos_arduino_schem.png)
+![schematic](foos_arduino_schem.png)
 
 ## Setup without an Arduino
 
-You can also run the whole setup without and Arduino and use the RaspberryPI to generate the 38Khz signal for the IR Leds, and read the IR receivers/buttons directly from the RPIs GPIO.
+You can also run the whole setup without an Arduino and use the RaspberryPI to generate the 38Khz signal for the IR Leds, and read the IR receivers/buttons directly from the RPIs GPIO.
 
 You only have to connect everything directly to the RaspberryPi GPIO and enable the io_raspberry plugin (see config.py.sample for config options).
 Verify the pin numbers in the config, and you're good to go!
